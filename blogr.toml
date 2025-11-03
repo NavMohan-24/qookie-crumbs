@@ -1,5 +1,5 @@
 [blog]
-title = "Qookie-Crumbs"
+title = "QookieCrumbs"
 author = "Navaneeth Mohan"
 description = "bits and pieces I learnt along the way.."
 base_url = "https://NavMohan-24.github.io/qookie-crumbs"
@@ -7,7 +7,7 @@ language = "en"
 timezone = "UTC"
 
 [theme]
-name = "minimal-retro"
+name = "minimal-retro-scientific"
 
 [theme.config]
 
