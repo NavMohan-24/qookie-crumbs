@@ -7,7 +7,7 @@ language = "en"
 timezone = "UTC"
 
 [theme]
-name = "minimal-retro-scientific"
+name = "minimal-retro"
 
 [theme.config]
 
