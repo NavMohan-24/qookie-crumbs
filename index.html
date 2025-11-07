@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QookieCrumbs</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: true,
+                processEnvironments: true
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.2/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/images/qookiecrumbs_banner.png" alt="QookieCrumbs Blog Banner" id="banner-image">
+        </header>
+        <div id="blog-posts"></div>
+        <div id="loading" class="loading" style="display: none;">Loading more posts...</div>
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
