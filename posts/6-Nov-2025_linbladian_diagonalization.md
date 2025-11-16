@@ -1,4 +1,5 @@
-# Diagonalizing Linbladian
+<!-- ## Linbladian Spectrum -->
+
 The [Linblad-Master Equation](https://en.wikipedia.org/wiki/Lindbladian) describes evolution of a quantum system weakly coupled to a memoryless (Markovian) environment. 
 
 $$

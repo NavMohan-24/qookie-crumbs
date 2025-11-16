@@ -1,7 +1,15 @@
 [
     {
         "date": "2025-11-06",
-        "title": "Linbladian Diagonalization",
-        "file": "posts/6-Nov-2024_linbladian_diagonalization.md"
+        "title": "Linbladian Spectrum",
+        "file": "posts/6-Nov-2025_linbladian_diagonalization.md",
+        "series": "Linbladian Diagonalization"
+    },
+    
+    {
+        "date": "2025-11-15",
+        "title": "How to Diagonalize a Matrix?",
+        "file": "posts/15-Nov-2025_how_to_diagonalize_a_matrix.md",
+        "series": "Linbladian Diagonalization"
     }
 ]
