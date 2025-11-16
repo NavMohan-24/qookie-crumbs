@@ -69,6 +69,14 @@ function processMarkdownWithMath(markdown) {
     return marked.parse(markdown);
 }
 
+function calculateReadTime(content) {
+    // Average reading speed: 200 words per minute
+    const wordsPerMinute = 200;
+    const wordCount = content.trim().split(/\s+/).length;
+    const readTime = Math.ceil(wordCount / wordsPerMinute);
+    return readTime;
+}
+
 function createPostElement(post) {
     const postDiv = document.createElement('div');
     postDiv.className = 'blog-post';
@@ -78,7 +86,7 @@ function createPostElement(post) {
     postDiv.innerHTML = `
         <div class="post-header">
             <div class="post-info">
-                <div class="post-date">${formatDate(post.date)}</div>
+                <div class="post-date">${formatDate(post.date)} • ${readTime} min read</div>
                 <div class="post-title">${post.title}</div>
             </div>
             <div class="expand-icon">▼</div>
@@ -89,6 +97,7 @@ function createPostElement(post) {
             </div>
         </div>
     `;
+
 
     const header = postDiv.querySelector('.post-header');
     header.addEventListener('click', () => {
