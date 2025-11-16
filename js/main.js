@@ -37,14 +37,16 @@ async function fetchPost(postInfo) {
         return {
             date: postInfo.date,
             title: postInfo.title,
-            content: content
+            content: content,
+            series: postInfo.series  
         };
     } catch (error) {
         console.error('Error loading post:', error);
         return {
             date: postInfo.date,
             title: postInfo.title,
-            content: `Error loading post: ${error.message}`
+            content: `Error loading post: ${error.message}`,
+            series: postInfo.series 
         };
     }
 }
@@ -55,6 +57,12 @@ async function loadAllPosts() {
         if (postsList.length === 0) {
             return;
         }
+        // Sort posts by date in descending order (newest first)
+        postsList.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA;  // Descending order (newest first)
+        });
         const promises = postsList.map(post => fetchPost(post));
         loadedPosts = await Promise.all(promises);
         loadPosts();
@@ -83,6 +91,7 @@ function createPostElement(post) {
     
     const contentHtml = processMarkdownWithMath(post.content);
     const readTime = calculateReadTime(post.content);
+    const seriesTag = post.series ? `<div class="post-series">${post.series}</div>` : '';
     
     postDiv.innerHTML = `
         <div class="post-header">
@@ -90,7 +99,10 @@ function createPostElement(post) {
                 <div class="post-date">${formatDate(post.date)} • ${readTime} min read</div>
                 <div class="post-title">${post.title}</div>
             </div>
-            <div class="expand-icon">▼</div>
+            <div class="post-header-right">
+                ${seriesTag}
+                <div class="expand-icon">▼</div>
+            </div>
         </div>
         <div class="post-content">
             <div class="post-content-inner">
@@ -98,7 +110,6 @@ function createPostElement(post) {
             </div>
         </div>
     `;
-
 
     const header = postDiv.querySelector('.post-header');
     header.addEventListener('click', () => {

@@ -63,6 +63,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     user-select: none;
+    gap: 15px;   /* changed */
 }
 
 .post-header:hover {
@@ -71,6 +72,7 @@ h1 {
 
 .post-info {
     flex: 1;
+    min-width: 0;                 /* ADDED */
 }
 
 .post-date {
@@ -84,6 +86,26 @@ h1 {
     font-weight: 600;
     color: #222;
 }
+
+/* COMPLETELY NEW SECTION */
+.post-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* COMPLETELY NEW SECTION */
+.post-series {
+    background: #e7f3f6;
+    color: #a5a6a8;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
 
 .expand-icon {
     font-size: 1.5em;
@@ -207,5 +229,21 @@ h1 {
 
     .post-title {
         font-size: 1.2em;
+    }
+
+    post-header {
+        flex-wrap: wrap;
+    }
+
+    .post-header-right {
+        order: -1;
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .post-series {
+        font-size: 0.8em;
+        padding: 3px 10px;
     }
 }
