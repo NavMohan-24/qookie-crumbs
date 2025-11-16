@@ -82,6 +82,7 @@ function createPostElement(post) {
     postDiv.className = 'blog-post';
     
     const contentHtml = processMarkdownWithMath(post.content);
+    const readTime = calculateReadTime(post.content);
     
     postDiv.innerHTML = `
         <div class="post-header">
