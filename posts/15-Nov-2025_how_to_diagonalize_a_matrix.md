@@ -2,7 +2,7 @@
 
 
 
-The direct approach to diagonalising a dense matrix using linear algebra routines like LAPACK consists of two steps. The first step is to transform the matrix into Tridiagonal Form and then do the eigen decompositon of the resultant tridiagonal matrix through methods like QR decomposition. LAPACK prefers this approach over the naive approach of solving the characteristic equation $det(A- \ lambda I)$ due to numerical instability.  However, the direct approach only works with normal/hermitian matrices as they satisfy the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem).
+The direct approach to diagonalising a dense matrix using linear algebra routines like LAPACK consists of two steps. The first step is to transform the matrix into Tridiagonal Form and then do the eigen decompositon of the resultant tridiagonal matrix through methods like QR decomposition. LAPACK prefers this approach over the naive approach of solving the characteristic equation $det(A- \lambda I)$ due to numerical instability.  However, the direct approach only works with normal/hermitian matrices as they satisfy the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem).
 
 
 
