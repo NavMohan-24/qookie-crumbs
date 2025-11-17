@@ -97,13 +97,9 @@ h1 {
 
 /* COMPLETELY NEW SECTION */
 .post-series {
-    background: #e7f3f6;
-    color: #a5a6a8;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.85em;
-    font-weight: 500;
-    white-space: nowrap;
+    color: #999;              /* Same as .post-date */
+    font-size: 0.9em;         /* Same as .post-date */
+    font-weight: normal;      /* Same as .post-date */
 }
 
 

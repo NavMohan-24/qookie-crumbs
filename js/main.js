@@ -91,16 +91,16 @@ function createPostElement(post) {
     
     const contentHtml = processMarkdownWithMath(post.content);
     const readTime = calculateReadTime(post.content);
-    const seriesTag = post.series ? `<div class="post-series">${post.series}</div>` : '';
+    // Changed from HTML element to inline text
+    const seriesTag = post.series ? ` • ${post.series}` : '';;
     
     postDiv.innerHTML = `
         <div class="post-header">
             <div class="post-info">
-                <div class="post-date">${formatDate(post.date)} • ${readTime} min read</div>
+                <div class="post-date">${formatDate(post.date)} • ${readTime} min read${seriesTag}</div>
                 <div class="post-title">${post.title}</div>
             </div>
             <div class="post-header-right">
-                ${seriesTag}
                 <div class="expand-icon">▼</div>
             </div>
         </div>
