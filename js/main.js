@@ -10,6 +10,29 @@ let currentIndex = 0;
 const postsPerLoad = 5;
 let isLoading = false;
 
+// Generate URL-friendly slug from title
+function generateSlug(title) {
+    return title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+// Get post ID from URL hash
+function getPostIdFromURL() {
+    const hash = window.location.hash.substring(1); // Remove #
+    return hash || null;
+}
+
+// Set post ID in URL
+function setPostIdInURL(postId) {
+    if (postId) {
+        window.location.hash = postId;
+    } else {
+        history.pushState("", document.title, window.location.pathname);
+    }
+}
+
 // Load posts list from JSON file
 async function loadPostsList() {
     try {
@@ -50,6 +73,29 @@ async function fetchPost(postInfo) {
         };
     }
 }
+// Expand a specific post by ID
+function expandPostById(postId) {
+    const postElement = document.querySelector(`[data-post-id="${postId}"]`);
+    if (postElement && !postElement.classList.contains('expanded')) {
+        postElement.classList.add('expanded');
+        MathJax.typesetPromise([postElement]).catch((err) => console.log('MathJax error:', err));
+        postElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('hashchange', () => {
+    const postId = getPostIdFromURL();
+    if (postId) {
+        expandPostById(postId);
+    } else {
+        // Close all posts if hash is removed
+        document.querySelectorAll('.blog-post.expanded').forEach(post => {
+            post.classList.remove('expanded');
+        });
+    }
+});
+
 
 async function loadAllPosts() {
     try {
@@ -65,7 +111,22 @@ async function loadAllPosts() {
         });
         const promises = postsList.map(post => fetchPost(post));
         loadedPosts = await Promise.all(promises);
-        loadPosts();
+        // Add unique IDs to posts
+        loadedPosts.forEach((post, index) => {
+            post.id = generateSlug(post.title);
+        });
+
+        // Check if URL has a post ID to open
+        const postIdFromURL = getPostIdFromURL();
+        if (postIdFromURL) {
+            // Load all posts first, then expand the specific one
+            currentIndex = loadedPosts.length; // Load all at once
+            loadPosts();
+            setTimeout(() => expandPostById(postIdFromURL), 100);
+        } else {
+            loadPosts();
+        }
+        
     } catch (error) {
         document.getElementById('error').textContent = 'Error loading posts: ' + error.message;
         document.getElementById('error').style.display = 'block';
@@ -87,6 +148,7 @@ function calculateReadTime(content) {
 
 function createPostElement(post) {
     const postDiv = document.createElement('div');
+    postDiv.setAttribute('data-post-id', post.id);
     postDiv.className = 'blog-post';
     
     const contentHtml = processMarkdownWithMath(post.content);
@@ -113,11 +175,16 @@ function createPostElement(post) {
 
     const header = postDiv.querySelector('.post-header');
     header.addEventListener('click', () => {
-        postDiv.classList.toggle('expanded');
-        if (postDiv.classList.contains('expanded')) {
-            // Tell MathJax to process the math in this post
-            MathJax.typesetPromise([postDiv]).catch((err) => console.log('MathJax error:', err));
-        }
+    const wasExpanded = postDiv.classList.contains('expanded');  // ADDED
+    postDiv.classList.toggle('expanded');
+    
+    if (postDiv.classList.contains('expanded')) {
+        setPostIdInURL(post.id);  //  Update URL with post ID
+        MathJax.typesetPromise([postDiv]).catch((err) => console.log('MathJax error:', err));
+        postDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });  // Scroll to post
+    } else {
+        setPostIdInURL(null);  // Clear URL hash when closing
+    }
     });
 
     return postDiv;
