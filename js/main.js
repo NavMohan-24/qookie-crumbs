@@ -119,10 +119,15 @@ async function loadAllPosts() {
         // Check if URL has a post ID to open
         const postIdFromURL = getPostIdFromURL();
         if (postIdFromURL) {
-            // Load all posts first, then expand the specific one
-            currentIndex = loadedPosts.length; // Load all at once
-            loadPosts();
-            setTimeout(() => expandPostById(postIdFromURL), 100);
+            // Load all posts at once if there's a hash
+            const end = loadedPosts.length;
+            const container = document.getElementById('blog-posts');
+            for (let i = 0; i < end; i++) {
+                container.appendChild(createPostElement(loadedPosts[i]));
+            }
+            currentIndex = end;
+            // Wait a bit for posts to render, then expand
+            setTimeout(() => expandPostById(postIdFromURL), 300);
         } else {
             loadPosts();
         }
