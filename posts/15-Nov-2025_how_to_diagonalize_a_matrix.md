@@ -2,11 +2,11 @@
 
 
 
-The direct approach to diagonalising a dense matrix using linear algebra routines like LAPACK consists of two steps. The first step is to transform the matrix into Tridiagonal Form and then do the eigen decompositon of the resultant tridiagonal matrix through methods like QR decomposition. LAPACK prefers this approach over the naive approach of solving the characteristic equation $det(A- \lambda I)$ due to numerical instability.  However, the direct approach only works with normal/hermitian matrices as they satisfy the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem).
+The direct approach to diagonalising a dense matrix using linear algebra routines like LAPACK consists of two steps. The first step is to transform the matrix into Tridiagonal Form and then do the eigen decompositon of the resultant tridiagonal matrix through methods like QR decomposition. LAPACK prefers this approach over the naive approach of solving the characteristic equation $det(A- \lambda I)$ due to numerical instability.  However, the direct approach only works with normal/Hermitian matrices as they satisfy the [spectral theorem](https://en.wikipedia.org/wiki/Spectral_theorem).
 
 
 
-Non-symmetric/hermitian matrices in general do not satisfy the spectral theorem and could be [defective](https://en.wikipedia.org/wiki/Defective_matrix). In other words, some of the non-hermitian matrices not have a complete set of eigenbasis and hence will not be diagonalizable. Our aim is to diagonalize the Linbladian, which in its matrix form is non-Hermitian, thus direct methods could fail. Although there is a very recent work that claims almost all Linbladians (Quantum Channels in general) are diagonalizable [1], I currently lacks the mathematical rigor to fully appreciate the results :). 
+Non-symmetric/Hermitian matrices in general do not satisfy the spectral theorem and could be [defective](https://en.wikipedia.org/wiki/Defective_matrix). In other words, some of the non-Hermitian matrices not have a complete set of eigenbasis and hence will not be diagonalizable. Our aim is to diagonalize the Linbladian, which in its matrix form is non-Hermitian, thus direct methods could fail. Although there is a very recent work that claims almost all Linbladians (Quantum Channels in general) are diagonalizable [1], I currently lacks the mathematical rigor to fully appreciate the results :). 
 
 
 
