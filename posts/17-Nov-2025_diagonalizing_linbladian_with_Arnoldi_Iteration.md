@@ -64,35 +64,35 @@ The resultant Hessenberg matrix is real because each entry is obtained from the 
 ``` -->
 
 ```
-                        ┌─────────────────────────────────┐
-                        │                                 │                                               
-                        │    Upper Hessenberg Matrix (H)  │                                               
-                        │                                 │                                               
-                        └───────────────┬─────────────────┘                                               
-                                        │                                                                 
-                                        │ dhseqr with Z = I                                               
-                                        │                                                                 
-                        ┌───────────────▼─────────────────┐                                               
-                        │                                 │                                               
-                        │  Schur Form T + Schur Vector Z  │                                               
-                        │                                 │                                               
-                        └───────────────┬─────────────────┘                                               
-                                        │                                                                 
-                                        │ dtrvec                                                          
-                                        │                                                                 
-                        ┌───────────────▼─────────────────┐                                               
-                        │                                 │                                               
-                        │     Eigen vectors of T (V_T)    │                                               
-                        │                                 │                                               
-                        └───────────────┬─────────────────┘                                               
-                                        │                                                                 
-                                        │ multiply Z x V_T                                                
-                                        │                                                                 
-                        ┌───────────────▼─────────────────┐                                               
-                        │                                 │                                               
-                        │     Eigen Vectors of H (V_H)    │                                               
-                        │                                 │                                               
-                        └─────────────────────────────────┘                                               
+    ┌─────────────────────────────────┐
+    │                                 │                                               
+    │    Upper Hessenberg Matrix (H)  │                                               
+    │                                 │                                               
+    └───────────────┬─────────────────┘                                               
+                    │                                                                 
+                    │ dhseqr with Z = I                                               
+                    │                                                                 
+    ┌───────────────▼─────────────────┐                                               
+    │                                 │                                               
+    │  Schur Form T + Schur Vector Z  │                                               
+    │                                 │                                               
+    └───────────────┬─────────────────┘                                               
+                    │                                                                 
+                    │ dtrvec                                                          
+                    │                                                                 
+    ┌───────────────▼─────────────────┐                                               
+    │                                 │                                               
+    │     Eigen vectors of T (V_T)    │                                               
+    │                                 │                                               
+    └───────────────┬─────────────────┘                                               
+                    │                                                                 
+                    │ multiply Z x V_T                                                
+                    │                                                                 
+    ┌───────────────▼─────────────────┐                                               
+    │                                 │                                               
+    │     Eigen Vectors of H (V_H)    │                                               
+    │                                 │                                               
+    └─────────────────────────────────┘                                               
 ```
 
 The `dhseqr` routines convert a Hessenberg matrix to a Schur matrix via QR decompositions. A Schur matrix has an upper-triangular (or block upper triangular) structure, and its eigenvalues can be directly obtained from the diagonal entries, which form the Ritz values. Further, the eigenvectors of the Schur matrix could be found using the `dtrvec` routine, and they could be transformed into eigenvectors of the Hessenberg matrix. Ritz vectors could be found from eigenvectors of the Hessenberg matrix as follows;
