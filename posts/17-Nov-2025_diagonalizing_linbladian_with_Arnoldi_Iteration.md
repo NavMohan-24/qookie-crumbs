@@ -34,25 +34,25 @@ end
 ```
 
 The resultant Hessenberg matrix is real because each entry is obtained from the Hilbert–Schmidt inner product of two Hermitian matrices. Due to its upper-triangular like structure, an Hessenberg matrix could be efficiently diagonalized compared to its original form. LAPACK has specialized functions that could do diagonalization of a Hessenberg matrix efficiently, as follows.
-```
+<!-- ```
                      _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
                     |                                             |
                     |       Upper Hessenberg Matrix (H)           |          
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
                                         |
-                                        |  dhseqr with Z = I
-                                        v
-                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                                 dhseqr with Z = I
+                                        |
+                    +-------------------V-------------------------+
                     |                                             |
                     |     Schur Form T + Schur Vector Z           |          
-                    | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
+                    +---------------------------------------------+
                                         |
-                                        |  dtrvec   
-                                        v
-                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                                     dtrvec   
+                                        |
+                    +-------------------V-------------------------+
                     |                                             |
                     |           Eigen vectors of T (V_T)          |          
-                    | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
+                    + _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ +
                                         |
                                         |  multiply Z x V_T
                                         v
@@ -61,7 +61,33 @@ The resultant Hessenberg matrix is real because each entry is obtained from the 
                     |          Eigen Vectors of H (V_H)           |          
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
 
+``` -->
+
 ```
+                            +----------------------------------+
+                            |    Upper Hessenberg Matrix (H)   |
+                            +--------------+-------------------+
+                                           |                    
+                                     dhseqr with Z=I             
+                                           |                    
+                            +--------------v-------------------+
+                            |  Schur Form T + Schur Vector Z   |
+                            +--------------+-------------------+
+                                           |                    
+                                         dtrvec                  
+                                           |                    
+                            +--------------v-------------------+
+                            |     Eigenvectors of T (V_T)      |
+                            +--------------+-------------------+
+                                           |                    
+                                     multiply Z*V_T              
+                                           |                    
+                            +--------------v-------------------+
+                            |     Eigenvectors of H (V_H)      |
+                            +----------------------------------+
+
+```
+
 
 <!-- ```
     ┌─────────────────────────────────┐
