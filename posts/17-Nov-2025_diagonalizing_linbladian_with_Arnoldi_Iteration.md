@@ -41,22 +41,22 @@ The resultant Hessenberg matrix is real because each entry is obtained from the 
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
                                         |
                                         |  dhseqr with Z = I
-                                        \/
+                                        v
                      _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
                     |                                             |
                     |     Schur Form T + Schur Vector Z           |          
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
                                         |
                                         |  dtrvec   
-                                        \/
+                                        v
                      _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
                     |                                             |
                     |           Eigen vectors of T (V_T)          |          
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
                                         |
                                         |  multiply Z x V_T
-                                        \/
-                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                                        v
+                     _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ g_ _ _ _ _
                     |                                             |
                     |          Eigen Vectors of H (V_H)           |          
                     | _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
