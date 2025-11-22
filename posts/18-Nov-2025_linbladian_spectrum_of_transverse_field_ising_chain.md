@@ -37,12 +37,15 @@ Finally, before ending the blog, I would like to share some qookie crumbs with y
 
 - Diagonalizing a Lindbladian is very useful for understanding the long-term dynamics of an open quantum system, especially for identifying the steady state.  However, my current approach is not efficient in finding steady state. Arnoldi iteration in its orginal form designed give the dominant eigenvectors iteratively (based on maginitue of eigen values). As steady state correspond zero eigenvalue, my solver takes some iterations to give the steady-state. If the goal is only to obtain the steady state, a shift–invert strategy is much more efficient, since it directly targets eigenvalues near zero by repeatedly solving shifted linear systems.
 
-- Finally, the whole implementation becomes much more simpler when using `Eigen`[3] along with the ARPACK library [4] rather than implementing it from scratch using BLAS and Lapack libraries. :)
+- Arnoldi iteration is powerful enough to be used for time-evolving open quantum systems as well. A very nice paper in this direction can be found in [3]. The ideas are closely related to what I discussed here, but I discovered this paper quite late — reading it earlier would have saved me a lot of time!
+
+- Finally, the whole implementation becomes much more simpler when using `Eigen`[4] along with the ARPACK library [5] rather than implementing it from scratch using BLAS and Lapack libraries. :)
 
 
 
 **References**
 1. [Basic Linear Algebra Subprograms](https://www.netlib.org/blas/)
 2. [Restarting Arnoldi and Lanczos algorithms](https://people.inf.ethz.ch/arbenz/ewp/Lnotes/chapter11.pdf)
+3. [Arnoldi-Lindblad time evolution](https://arxiv.org/pdf/2109.01648)
 3. [Eigen Package](https://libeigen.gitlab.io/eigen/docs-nightly/)
 4. [ezARPACK](https://krivenko.github.io/ezARPACK/guide/index.html)
