@@ -9,7 +9,12 @@ Sampling randomized quantum circuits is an important part of twirling based meth
 Samplomatic and the Executor primitive represent the next step in the evolution of twirling-based methods. Samplomatic is a Python library designed to handle complex, customized sampling and randomization of quantum circuits. The Executor primitive handles the implementation of customized randomizations in the quantum computers as directed by the user. Together, they give users a much more granular control over designing and executing twirling based experiments.
 
 Boxes and Annotations are central Qiskit features that samplomatic exploits to enable thes customized randomizations. Boxes are control-flow constructs (similar to `if_test`) which can be added to the circuit without an explicit condition. They group set of gate operations and their contents behave somewhat as if the start and end of the box were barriers. However, unlike barriers, a box is permeable, allowing external operations to commute through it provided they commute with all internal instructions.
-![box-example](../images/samplomatic/box-example.svg)
+
+<figure>
+    <img src="./images/samplomatic/box-example.svg"
+         alt="boxed-up-circuit">
+    <figcaption> Fig 1: Boxed Up Circuit.</figcaption>
+</figure>
 
 Annotations are the framework used to attach metadata to Box operations within quantum circuit and `DAGCircuit`. This metadata could be tracked and consumed by arbitrary transpiler passes including the custom ones. Intuitively, annotations are similar to the `PropertySet` which is a dictionary-like object in Qiskit. It stores the properties of `DAGCircuit` and could be accessed by all transpiler passes during transpilation. Compared to the `PropertySet`, the scope of `Annotations` are local, meaning only applied to a box of instructions.
 
@@ -46,9 +51,9 @@ with qc.box(annotations=[Twirl()]):
 
 Beyond Pauli Twirling, samplomatic also supports other types of tasks such as noise injection, noise model learning and basis change - all performed within scope of a box. Each box is annotated with the appropriate directive for the intended task. The key directives currently supported are:
 
-- `Twirl` - Directive to twirl the contents of a `box` instruction.
+- `Twirl` - Directive to twirl the contents of a box instruction.
 - `ChangeBasis` - Directive to add basis changing gates.
-- `InjectNoise` - Directive to inject noise into a `box` instruction.
+- `InjectNoise` - Directive to inject noise into a box instruction.
 
 Samplomatic also provides functionalities to further configure the directives. Thus in short, boxes group the operations and the tasks to be performed within that scope are declared and configured via annotations.
 
