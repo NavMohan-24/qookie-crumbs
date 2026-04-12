@@ -13,7 +13,9 @@ Boxes and Annotations are central Qiskit features that samplomatic exploits to e
 <figure>
     <img src="./images/samplomatic/box-example.svg"
          alt="boxed-up-circuit">
-    <figcaption> Fig 1: Boxed Up Circuit.</figcaption>
+     <figcaption style="text-align: center; font-weight: bold;">
+        Fig 1: Boxed Up Circuit.
+    </figcaption>
 </figure>
 
 Annotations are the framework used to attach metadata to Box operations within quantum circuit and `DAGCircuit`. This metadata could be tracked and consumed by arbitrary transpiler passes including the custom ones. Intuitively, annotations are similar to the `PropertySet` which is a dictionary-like object in Qiskit. It stores the properties of `DAGCircuit` and could be accessed by all transpiler passes during transpilation. Compared to the `PropertySet`, the scope of `Annotations` are local, meaning only applied to a box of instructions.
