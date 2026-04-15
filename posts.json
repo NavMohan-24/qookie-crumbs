@@ -32,5 +32,11 @@
         "title": "Samplomatic-101",
         "file": "posts/12-APR-2026_samplomatic_101.md",
         "series": "Playing with Samplomatic - I"
+    },
+    {
+        "date": "2026-04-15",
+        "title": "Twirling a Bell Circuit with Samplomatic",
+        "file": "posts/15-APR-2026_twirling_bell_circuit.md",
+        "series": "Playing with Samplomatic - II"
     }
 ]
