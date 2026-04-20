@@ -4,11 +4,12 @@ To explain samplex, we revist example of twirling two qubit gate and measurement
 
 Samplomatic takes an alternative approach.  It implements twirling using dressing inside the template circuit. The dressing parameters are tuned to realize both the original circuit's gates and the randomized twirling gates. In this approach, each randomization corresponds to a specific choice of parameter values for the dressing. The number of circuits therefore remains constant regardless of the number of randomizations required.
 
-<figure>
+<figure style="text-align: center;">
     <img src="./images/samplomatic/box-to-template-marked.svg"
-         alt="marked-template-circuit">
-    <figcaption style="text-align: center; font-weight: bold;">
-    Structural Similarity between boxed circuit and template circuit. The barriers L0 and R0 represent the scope of Box-1 and L1 and R1 represents the scope of Box-2. The gates between L0 (L1) and M0 (M1) is the dressing. 
+         alt="marked-template-circuit"
+         style="width:75%; height:auto;">
+    <figcaption style="font-weight: bold; font-size: 14px;">
+   Fig-1: Structural Similarity between boxed circuit and template circuit. The barriers L0 and R0 represent the scope of Box-1 and L1 and R1 represents the scope of Box-2. The gates between L0 (L1) and M0 (M1) is the dressing. 
     </figcaption>
 </figure>
 
@@ -26,11 +27,13 @@ Beyond the twirling gates, Samplomatic also tracks the single-qubit gates origin
 
 The random Pauli gates used for twirling are considered *virtual* because they do not add any additional operations to the circuit. Instead, they act as a directive to alter how adjacent single-qubit gates are implemented. Samplomatic generally generate virtual registers on the opposite side of the dressing. In the Bell circuit, virtual registers $P\cdot P$ and $Q \cdot Q$ are generated at `R0` and `R1` respectively. The virtual registers are then propagated in both directions. 
 
-<figure>
+
+<figure style="text-align: center;">
     <img src="./images/samplomatic/pre-samplex.svg",
-         alt="marked-template-circuit">
-    <figcaption style="text-align: center; font-weight: bold;">
-    Depiction of mutations occuring to the virtual register during propagation. 
+         alt="marked-template-circuit"
+         style="width:75%; height:auto;">
+    <figcaption style="font-weight: bold; font-size: 14px;">
+    Fig-2: Depiction of mutations occuring to the virtual register during propagation. 
     </figcaption>
 </figure>
 
@@ -45,11 +48,11 @@ The important thing to note here is that If all virtual gates can be composed in
 We can now formally introduce the Samplex. It is a core type defined in samplomatic that represents a probability distribution over parameter values for executing template circuits and classical quantities for post-processing. The Samplex encodes randomization as a graph-based procedural representation. Calling samplex.graph returns a Directed Acyclic Graph (DAG) where each node represents a process.
 
 
-<figure>
+<figure style="text-align: center;">
     <img src="./images/samplomatic/samplex.svg",
          alt="samplex-circuit">
-    <figcaption style="text-align: center; font-weight: bold;">
-    Samplex from the Bell circuit. 
+    <figcaption style="font-weight: bold; font-size: 14px;">
+    Fig-3: Samplex from the Bell circuit. 
     </figcaption>
 </figure>
 
