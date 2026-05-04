@@ -22,7 +22,7 @@ template_circuit, samplex = build(qc)
 This code will raise a `SamplexBuildError` with the message: `Found an emission without a collector on subsystems {(0,), (1,)}`. Unlike the previous example, this code uses right dressing instead of left to twirl the two-qubit gates.
 
 <figure>
-    <img src="../images/samplomatic/template-circuit-comparison.svg"
+    <img src="./images/samplomatic/template-circuit-comparison.svg"
          alt="template-circuits">
      <figcaption style="text-align: center; font-weight: bold;">
         Fig 1: Comparison between (A) Left dressed (B) Right dressed template circuit for the Bell circuit.
