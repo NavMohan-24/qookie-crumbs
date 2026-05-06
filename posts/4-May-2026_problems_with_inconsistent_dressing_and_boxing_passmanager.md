@@ -112,8 +112,8 @@ qc.cz(0, 1)
 qc.measure(range(2), range(2))
 
 # Qiskit native transpiler
-pm = generate_preset_passmanager(
-    basis_gates=["rz", "sx", "cx"],
+pm = generate_preset_pass_manager(
+    basis_gates=["rz", "sx", "cz"],
     coupling_map=[[0, 1]],
     optimization_level=0,
 )
@@ -121,7 +121,7 @@ pm = generate_preset_passmanager(
 # Define the pass manager for twirling gates and measures
 boxing_pass_manager = generate_boxing_pass_manager(
     enable_gates = True,
-    enabele_measures = True,
+    enable_measures = True,
 )
 pm.post_scheduling = boxing_pass_manager
 
