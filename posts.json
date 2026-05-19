@@ -53,5 +53,12 @@
         "title": "Dressing Pitfalls and How to Avoid Them",
         "file" : "posts/4-May-2026_problems_with_inconsistent_dressing_and_boxing_passmanager.md",
         "series": "Playing with Samplomatic - IV"
+    },
+
+    {
+        "date" : "2026-05-18",
+        "title": "Directing the Execution of Randomisation Experiments",
+        "file" : "posts/18-May-2026_directing_the_execution.md",
+        "series": "Playing with Samplomatic - V"   
     }
 ]
