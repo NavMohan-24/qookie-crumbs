@@ -1,6 +1,3 @@
-# Directing the execution of randomization experiments
-
-
 Qiskit has introduced a new Directed Execution Model [1] that provides user's the highest flexibility in designing quantum circuits, defining their randomisations, and executing them on real quantum hardware. In the previous blogs, we saw how Samplomatic builds a procedural representation of a randomization experiment. In this blog, we will look at how to execute it on a quantum computer. 
 
 The conventional primivites in Qiskit (`EstimatorV2` and `SamplerV2`) accepts what are called PUBs (Primitive Unified Blocs). A PUB is composed of a quantum circuit, parameters and observables (for an estimator). These primitives are not designed to accept a samplex or execute a template circuit using the parameters it outputs. To address this, Qiskit has introduced a new quantum runtime executable called `QuantumProgram` and a new primitive called `Executor`.
@@ -103,9 +100,14 @@ However, this output alone is not entirely sufficient. Since we are performing m
 
 Once we have both arrays, we apply a classical bitwise XOR to correct the results [2]. Note that this XOR operation follows NumPy's broadcasting rules.
 
+With this post, we bring our series Playing with Samplomatic to a close. I hope it gave you a solid introduction to Samplomatic and how to design randomisation experiments. It is a unique tool, giving users a great deal of power in designing and running experiments on quantum computers. I believe it is the next step in the evolution of quantum computing programming.
+Since the tool is still in its early stages, we can expect new and interesting features to be added as it matures. Keep an eye on the Samplomatic repository [3] for updates and breaking changes!
+
 **References**
 
 [1] [Directed Execution Model](https://quantum.cloud.ibm.com/docs/en/guides/directed-execution-model)
 
 [2] [Executor Input Output](https://quantum.cloud.ibm.com/docs/en/guides/executor-input-output)
+
+[3] [Samplomatic Repo](https://github.com/Qiskit/samplomatic)
 
