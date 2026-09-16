@@ -60,5 +60,11 @@
         "title": "Directing the Execution of Randomisation Experiments",
         "file" : "posts/18-May-2026_directing_the_execution.md",
         "series": "Playing with Samplomatic - V"   
+    },
+    {
+        "date" : "2026-09-16",
+        "title": "Kuberenetes 101",
+        "file" : "posts/16-Sep-2026_kubernetes_101.md",
+        "series": "Quantum Service Playground -I"
     }
 ]

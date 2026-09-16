@@ -96,9 +96,7 @@ unflipped_result_1 = res_1 ^ flips_1
 ```
 The result is returned as a dictionary. The output from the twirling experiment could be accessed via classical register name as key. The shape of the output array would be `(num_randomisations, num_shots, num_creg)`. 
 
-However, this output alone is not entirely sufficient. Since we are performing measurement twirling, some gates are propagated to the end of the circuit. These need to be corrected to undo the effect of twirling. The required bit flips can be accessed via the key `measurement_flips.{creg_name}`. The shape of the bit flip array is `(num_randomisations, 1, num_register)`. The middle dimension is always 1, since the bit flip to be applied remains constant per randomisation.
-
-Once we have both arrays, we apply a classical bitwise XOR to correct the results [2]. Note that this XOR operation follows NumPy's broadcasting rules.
+However, this output alone is not entirely sufficient. Since we are performing measurement twirling, some gates are propagated to the end of the circuit. These need to be corrected to undo the effect of twirling. The required bit flips can be accessed via the key `measurement_flips.{creg_name}`. The shape of the bit flip array is `(num_randomisations, 1, num_register)`. The middle dimension is always 1, since the bit flip to be applied remains constant per randomisation. Once we have both arrays, we apply a classical bitwise XOR to correct the results [2]. Note that this XOR operation follows NumPy's broadcasting rules.
 
 With this post, we bring our series Playing with Samplomatic to a close. I hope it gave you a solid introduction to Samplomatic and how to design randomisation experiments. It is a unique tool, giving users a great deal of power in designing and running experiments on quantum computers. I believe it is the next step in the evolution of quantum computing programming.
 Since the tool is still in its early stages, we can expect new and interesting features to be added as it matures. Keep an eye on the Samplomatic repository [3] for updates and breaking changes!
