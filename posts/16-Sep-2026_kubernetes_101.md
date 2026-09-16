@@ -13,3 +13,7 @@ The pod acts as a logical host for its containers. Kubernetes uses the same Linu
 By default, pods use ephemeral storage. This means all data is tied to the lifecycle of the pod. Any data written to the container's filesystem will be lost if the pod is updated or deleted. To persist data across pod restarts, the container filesystem must be mounted to external storage. Kubernetes handles this through what is known as a Persistent Volume Claim.
 
 So far, we have seen the key building blocks of Kubernetes — containers, runtimes, and pods. But how does Kubernetes manage all of these at scale? There must be some underlying architecture that keeps everything running smoothly. In the next blog, we will look at the architecture of a Kubernetes cluster and set one up locally using kind (Kubernetes in Docker).
+
+**References**
+
+[1] [Containers From Scratch - Liz Rice](https://www.youtube.com/watch?v=8fi7uSYlOdc)
