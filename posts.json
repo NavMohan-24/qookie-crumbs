@@ -63,8 +63,14 @@
     },
     {
         "date" : "2026-09-16",
-        "title": "Kuberenetes 101",
+        "title": "Kuberenetes 101 : Containers, Runtimes and Pods",
         "file" : "posts/16-Sep-2026_kubernetes_101.md",
-        "series": "Quantum Service Playground -I"
+        "series": "Cloud Nine - I"
+    },
+    {
+        "date" : "2026-10-14",
+        "title": "The Manager : Workload Resources",
+        "file" : "posts/14_Oct_2026_workload_resources.md",
+        "series": "Cloud Nine - II"
     }
 ]
